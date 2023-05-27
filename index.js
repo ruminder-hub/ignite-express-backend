@@ -3,8 +3,10 @@ const express = require('express');
 const app = express();
 
 var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
 app.use('/index', indexRouter);
+app.use('/user', usersRouter);
 
 app.get('/', (req, res) => res.send('Home Page Route'));
 
