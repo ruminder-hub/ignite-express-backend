@@ -1,5 +1,5 @@
 var express = require('express');
-const StudentModel = require('../src/db_models/student_model');
+const StudentModel = require('../models/student_model');
 var router = express.Router();
 
 /* GET users listing. */
