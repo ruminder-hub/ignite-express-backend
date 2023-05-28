@@ -15,9 +15,10 @@ const corsOpts = {
   ]
 }
 
+app.use(cors());
+console.log("App is using cors");
 app.use('/index', indexRouter);
 app.use('/user', usersRouter);
-app.use(cors());
 
 app.get('/', (req, res) => res.send('Home Page Route'));
 
@@ -35,6 +36,6 @@ console.log(uri);
 mongoose.connect(uri);
 const connection = mongoose.connection;
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3005;
 
 app.listen(port, () => console.log(`Server running on ${port}, http://localhost:${port}`));
