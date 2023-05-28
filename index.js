@@ -17,6 +17,9 @@ const corsOpts = {
 
 app.use(cors());
 console.log("App is using cors");
+app.configure(function(){
+  app.use(express.bodyParser());
+});
 app.use('/index', indexRouter);
 app.use('/user', usersRouter);
 
