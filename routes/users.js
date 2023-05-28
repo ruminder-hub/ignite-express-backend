@@ -19,7 +19,7 @@ router.get('/student-result/:regId', async function(req, res) {
 
 router.post('/student', async function(req, res) {
     console.log(req);
-    console.log("Request received");
+    console.log(`Request received $req.body`);
     let result = await createStudentRecords(req.body, res);
     return result;
 });
