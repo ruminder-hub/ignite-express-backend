@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require("cors");
+const bodyParser = require('body-parser')
 
 const app = express();
 
@@ -17,9 +18,13 @@ const corsOpts = {
 
 app.use(cors());
 console.log("App is using cors");
-app.configure(function(){
-  app.use(express.bodyParser());
-});
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
 app.use('/index', indexRouter);
 app.use('/user', usersRouter);
 
