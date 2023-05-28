@@ -6,7 +6,15 @@ const app = express();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-app.use(cors());
+
+const corsOpts = {
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: [
+    'Content-Type'
+  ]
+}
+app.use(cors(corsOpts));
 app.use('/index', indexRouter);
 app.use('/user', usersRouter);
 
