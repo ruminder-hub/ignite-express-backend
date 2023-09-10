@@ -6,6 +6,7 @@ const app = express();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var loginRouter = require('./routes/login');
 
 
 const corsOpts = {
@@ -27,6 +28,7 @@ app.use(bodyParser.json())
 
 app.use('/index', indexRouter);
 app.use('/user', usersRouter);
+app.use('', usersRouter);
 
 app.get('/', (req, res) => res.send('Home Page Route'));
 
