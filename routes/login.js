@@ -84,3 +84,4 @@ registerUser = async (loginCredentials, res) =>  {
     });
 }
 
+module.exports = router;
