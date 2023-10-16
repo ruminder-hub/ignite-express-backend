@@ -17,7 +17,7 @@ router.get('/result/:regId', async function(req, res) {
     return result;
 });
 
-router.post('/create', async function(req, res) {
+router.post('/record/create', async function(req, res) {
     console.log(`Request received $req.body`);
     console.log(req.body);
     let result = await createStudentRecords(req.body, res);

@@ -27,8 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use('/index', indexRouter);
-app.use('/user', usersRouter);
-app.use('', usersRouter);
+app.use('/student', usersRouter);
+app.use('/user', loginRouter);
 
 app.get('/', (req, res) => res.send('Home Page Route'));
 
