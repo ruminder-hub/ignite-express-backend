@@ -1,5 +1,7 @@
 const UserModel = require("../models/user_model");
 const bcrypt = require("bcrypt")
+var express = require('express');
+var router = express.Router();
 
 router.post('/login', async function(req, res) {
     console.log(`Request received $req.body`);

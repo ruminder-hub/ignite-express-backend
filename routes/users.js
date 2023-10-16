@@ -8,7 +8,7 @@ router.get('/demo', function(req, res, next) {
 });
 
 
-router.get('/student-result/:regId', async function(req, res) {
+router.get('/result/:regId', async function(req, res) {
     let regId = req.params.regId;
     let rollNo = req.query.rollNo;
     console.log(regId)
@@ -17,7 +17,7 @@ router.get('/student-result/:regId', async function(req, res) {
     return result;
 });
 
-router.post('/student', async function(req, res) {
+router.post('/create', async function(req, res) {
     console.log(`Request received $req.body`);
     console.log(req.body);
     let result = await createStudentRecords(req.body, res);
