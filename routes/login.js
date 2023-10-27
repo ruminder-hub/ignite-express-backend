@@ -36,7 +36,7 @@ verifyCredentials = async (loginCredentials, res) =>  {
                     }
                 });
               } catch(err) {
-                console.log("Excpetion occurred while saving data");
+                console.log("Excpetion occurred while saving data", err);
                 return res.status(500).send(err);
               }
             }
@@ -53,20 +53,20 @@ registerUser = async (loginCredentials, res) =>  {
     UserModel.find({ username: loginCredentials.username})
     .then((result) => {
         if (result.length != 0) {
-            return res.status(200).send(`User with $loginCredentials.username already exists`);
+            return res.status(200).send(`User with username: ${loginCredentials.username} already exists`);
           } else {
-            console.log("Student not found in database creating one.");
+            console.log("User not found in database creating one.");
             try {
-                bcrypt.genSalt(len(loginCredentials.password), (err, salt) => {
-                    bcrypt.hash(plaintextPassword, salt, function(err, hash) {
+                bcrypt.genSalt(loginCredentials.password.length, (err, salt) => {
+                    bcrypt.hash(loginCredentials.password, salt, function(err, hash) {
                         // Store hash in the database
-                        const user = new UsernModel({
+                        const user = new UserModel({
                             username: loginCredentials.username,
                             password: hash
                         });
                         user.save().then((user_result) => {
                             let id = user_result.get("_id");
-                            return res.status(200).send(stu_result)
+                            return res.status(200).send(user_result)
                         })
                         .catch((error) => {
                             console.log("Error occurred");
@@ -76,7 +76,7 @@ registerUser = async (loginCredentials, res) =>  {
                     });
                 })
             } catch(err) {
-              console.log("Excpetion occurred while saving data");
+              console.log("Excpetion occurred while saving data", err);
               return res.status(500).send(err);
             }
           }

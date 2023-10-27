@@ -28,6 +28,7 @@ createStudentRecords = async (studentDetails, res) =>  {
     if (studentDetails.rollNo == undefined || studentDetails.regId == undefined) {
       return res.status(400).send("Provide rollNo and regId for the student");
     }
+    console.log("Received request to create student records", JSON.stringify(studentDetails));
     StudentModel.find({ rollNo: studentDetails.rollNo, regId: studentDetails.regId })
     .then((result) => {
         if (result.length != 0) {
@@ -52,6 +53,7 @@ createStudentRecords = async (studentDetails, res) =>  {
         }
       })
       .catch((err) => {
+        console.log(err);
         return res.status(500).send("Failed to created student");
       });
 }
